@@ -76,14 +76,37 @@ var searchFunc = function(path, search_id, content_id) {
                             keywords.forEach(function(keyword){
                                 var regS = new RegExp(keyword, "gi");
                                 match_content = match_content.replace(regS, "<em class=\"search-keyword\">"+keyword+"</em>");
-                            });
-                            
+                            })
                             str += "<p class=\"search-result\">" + match_content +"...</p>"
                         }
                     }
-                });
+                })
                 $resultContent.innerHTML = str;
-            });
+            })
         }
-    });
+    })
 }
+var inputArea = document.querySelector("#local-search-input");
+var getSearchFile = function(){
+    var path = "/search.xml";
+    searchFunc(path, 'local-search-input', 'local-search-result');
+}
+
+inputArea.onfocus = function(){ getSearchFile() }
+var $resetButton = $("#search-form .fa-times");
+var $resultArea = $("#local-search-result");
+
+inputArea.oninput = function(){ $resetButton.show(); }
+resetSearch = function(){
+    $resultArea.html("");
+    document.querySelector("#search-form").reset();
+    $resetButton.hide();
+    $(".no-result").hide();
+}inputArea.onkeydown = function(){ if(event.keyCode==13) return false}
+$resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+    if (!$(e.target).text()) {
+        $(".no-result").show(200); 
+    } else {
+      $(".no-result").hide();
+    }
+})
