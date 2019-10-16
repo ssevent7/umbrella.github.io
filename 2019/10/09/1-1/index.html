@@ -93,6 +93,11 @@
 
 
 </head>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<form class="site-search-form">
+<input type="text" id="local-search-input" class="st-search-input">
+</form>
+<div id="local-search-result" class="local-search-result-cls"></div>
 <script>
     var yiliaConfig = {
         fancybox: true,
@@ -125,7 +130,7 @@
 
         
             <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
             <i class="fa fa-times" onclick="resetSearch()"></i>
             </form>
             <div id="local-search-result"></div>
