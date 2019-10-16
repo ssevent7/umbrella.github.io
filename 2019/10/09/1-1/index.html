@@ -93,11 +93,6 @@
 
 
 </head>
-<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<form class="site-search-form">
-<input type="text" id="local-search-input" class="st-search-input">
-</form>
-<div id="local-search-result" class="local-search-result-cls"></div>
 <script>
     var yiliaConfig = {
         fancybox: true,
@@ -119,6 +114,12 @@
     <div class="overlay"></div>
 <div class="intrude-less">
     <header id="header" class="inner">
+<form id="search-form">
+<input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off"/>
+<i class="fa fa-times" onclick="resetSearch()"></i>
+</form>
+<div id="local-search-result"></div>
+<p class='no-result'>没有搜索结果...</p>
         <a href="/" class="profilepic">
             <img src="/img/xd.png" class="animated zoomIn">
         </a>
@@ -321,6 +322,29 @@
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-前提"><span class="toc-number">1.</span> <span class="toc-text">1.前提</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-系统"><span class="toc-number">2.</span> <span class="toc-text">2.系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-JAVA"><span class="toc-number">3.</span> <span class="toc-text">3.JAVA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-搭建Minecraft服务端"><span class="toc-number">4.</span> <span class="toc-text">4.搭建Minecraft服务端</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1核心文件"><span class="toc-number">4.1.</span> <span class="toc-text">4.1核心文件</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
